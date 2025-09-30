@@ -1,12 +1,12 @@
 name: Update README activity
 
 on:
-  workflow_dispatch:   # 先手動觸發
-  # schedule:          # A 等級先不用，教授說先跳過排程
-  #   - cron: "17 */6 * * *"  # 想要定期更新再打開
+  workflow_dispatch:     # 先手動觸發
+  # schedule:
+  #   - cron: "17 */6 * * *"   # 想開排程再打開
 
 permissions:
-  contents: write      # 讓內建 GITHUB_TOKEN 有寫回 README 的權限
+  contents: write        # 讓內建 token 可以 commit README
 
 jobs:
   update:
@@ -15,8 +15,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Update activity section
-        uses: TheDanniCraft/activity-log@v1
+      # 這個 action 會更新下方兩個標記之間的內容：
+      # <!--START_SECTION:activity--> ... <!--END_SECTION:activity-->
+      - name: Update README with recent activity
+        uses: Readme-Workflows/recent-activity@v2.4.1
         with:
-          GITHUB_USERNAME: <lcyuu93>   
-          GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
+          GH_TOKEN: ${{ secrets.REPO_TOKEN }}      # 你剛剛建立的 PAT
+          MAX_LINES: 10                            # 顯示幾行（可調）
+          COMMIT_MSG: "ci: update recent activity [skip ci]"
