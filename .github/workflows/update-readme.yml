@@ -1,0 +1,21 @@
+name: Update README activity
+
+on:
+  workflow_dispatch:   # 先手動觸發
+  # schedule:          # A 等級先不用，教授說先跳過排程
+  #   - cron: "17 */6 * * *"  # 想要定期更新再打開
+
+permissions:
+  contents: write      # 讓內建 GITHUB_TOKEN 有寫回 README 的權限
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update activity section
+        uses: TheDanniCraft/activity-log@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
