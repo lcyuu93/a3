@@ -1,12 +1,12 @@
 name: Update README activity
 
 on:
-  workflow_dispatch:     # 先手動觸發
+  workflow_dispatch:
   # schedule:
-  #   - cron: "17 */6 * * *"   # 想開排程再打開
+  #   - cron: "17 */6 * * *"
 
 permissions:
-  contents: write        # 讓內建 token 可以 commit README
+  contents: write
 
 jobs:
   update:
@@ -15,11 +15,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 這個 action 會更新下方兩個標記之間的內容：
-      # <!--START_SECTION:activity--> ... <!--END_SECTION:activity-->
       - name: Update README with recent activity
-        uses: Readme-Workflows/recent-activity@v2.4.1
+        uses: jamesgeorge007/github-activity-readme@v0.3.6
         with:
-          GH_TOKEN: ${{ secrets.REPO_TOKEN }}      # 你剛剛建立的 PAT
-          MAX_LINES: 10                            # 顯示幾行（可調）
+          GH_TOKEN: ${{ secrets.REPO_TOKEN }}          # 你已建立的 PAT
+          MAX_LINES: 10
           COMMIT_MSG: "ci: update recent activity [skip ci]"
