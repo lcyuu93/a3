@@ -10,6 +10,5 @@
 7. 🎉 Created a new repository [lcyuu93/test](https://github.com/lcyuu93/test)
 8. ➕ Created a new branch [`main`](https://github.com/lcyuu93/NUT-17test/tree/main) in [lcyuu93/NUT-17test](https://github.com/lcyuu93/NUT-17test)
 9. 🎉 Created a new repository [lcyuu93/NUT-17test](https://github.com/lcyuu93/NUT-17test)
-10. ![Update README](https://github.com/<lcyuu93>/<a3>/actions/workflows/update-readme.yml/badge.svg)
 <!--END_SECTION:activity-->
 > Docs: minor tweak for A3.
